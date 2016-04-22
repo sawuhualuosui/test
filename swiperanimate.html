@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>swiperanimate</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="swiper-3.3.1.min.css">
+<link rel="stylesheet" href="animate.css">
+<style>
+	*{margin:0; padding:0; list-style: none;}
+	.swiper-container{
+		width: 6.4rem;
+	}
+	.s1{
+		background: url(images/ty4.jpg) 0 0 no-repeat;
+		background-size: 100% 100%;
+	}
+	.s2{
+		background: url(images/ty5.jpg) 0 0 no-repeat;
+		background-size: 100% 100%;
+	}
+	.s3{
+		background: url(images/ty3.jpg) 0 0 no-repeat;
+		background-size: 100% 100%;
+	}
+	.s4{
+		background: url(images/ty10.jpg) 0 0 no-repeat;
+		background-size: 100% 100%;
+	}
+	.s5{
+		background: url(images/ty11.jpg) 0 0 no-repeat;
+		background-size: 100% 100%;
+	}
+	.swiper-slide .tu1{
+		width: 3.2rem;
+		height: 3rem;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		margin-top: -3rem;
+		margin-left: -1.6rem;
+	}
+	.swiper-slide .tu2{
+		width: 2.96rem;
+		height: 1.48rem;
+		position: absolute;
+		left: 50%;
+		top: 60%;
+		margin-left: -1.48rem;
+	}
+	.swiper-slide .tu3{
+		width: 0.62rem;
+		height: 0.35rem;
+		position: absolute;
+		left: 50%;
+		top: 68%;
+	}
+	.swiper-slide .tu4{
+		width: 0.42rem;
+		height: 0.24rem;
+		position: absolute;
+		left: 60%;
+		top: 68%;
+	}
+
+</style>
+<script>
+	function resetFont(){
+		var HTML=document.getElementsByTagName('html')[0];
+		var ww=document.documentElement.clientWidth;
+		var scale=ww/640;//640是设计图psd的宽度
+		HTML.style.fontSize=100*scale+'px';
+	}
+	resetFont();
+	window.onresize=function (){
+		resetFont();
+	}
+</script>
+</head>
+<body>
+	<!-- 在需要运动的元素上面增加类名  ani   ，和其他的类似插件相同，Swiper Animate需要指定几个参数：
+
+	swiper-animate-effect：切换效果，例如 fadeInUp 
+	swiper-animate-duration：可选，动画持续时间（单位秒），例如 0.5s
+	swiper-animate-delay：可选，动画延迟时间（单位秒），例如 0.3s -->
+	<div class="swiper-container" id="box">
+	    <div class="swiper-wrapper">
+	        <div class="swiper-slide s1">
+	        	<img src="images/tu1.png" alt="" class="ani tu1" swiper-animate-effect="bounceIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">
+	        	<img src="images/tu2.png" alt="" class="ani tu2" swiper-animate-effect="rotateInDownLeft" swiper-animate-duration="0.5s" swiper-animate-delay="0.7s">
+	        	<img src="images/tu3.png" alt="" class="ani tu3" swiper-animate-effect="fadeInUpBig" swiper-animate-duration="0.5s" swiper-animate-delay="1.2s">
+	        	<img src="images/tu4.png" alt="" class="ani tu4" swiper-animate-effect="zoomOutUp" swiper-animate-duration="0.5s" swiper-animate-delay="1.9s">
+	        </div>
+	        <div class="swiper-slide s2">
+	        	
+	        </div>
+	        <div class="swiper-slide s3"></div>
+	        <div class="swiper-slide s4"></div>
+	        <div class="swiper-slide s5"></div>
+	    </div>
+	    <!-- 分页器 -->
+	    <div class="swiper-pagination"></div>
+	</div>
+</body>
+<script type="text/javascript" src="swiper-3.3.1.min.js"></script>
+<script type="text/javascript" src="swiper.animate1.0.2.min.js"></script>
+<script>
+	var box=document.getElementById('box');
+	var winH=document.documentElement.clientHeight;
+	box.style.height=winH+'px';//使高度充滿全屏
+	var mySwiper = new Swiper ('.swiper-container', {
+	    // direction: 'vertical', //竖向
+	    direction: 'horizontal', //横向
+	    loop: true, //循环
+	    autoplay : 2000, //自动播放的时间间隔
+	    speed:500,//图片滑动速度
+	    autoplayDisableOnInteraction : false, //控制后继续自动播放
+	    paginationClickable :true, //分页器可以点击切换
+	    grabCursor : true, //鼠标手掌
+	    // 分页器
+	    pagination: '.swiper-pagination',
+	    // paginationType : 'progress',//进度
+	    
+	    // 前进后退按钮
+	    nextButton: '.swiper-button-next',
+	    prevButton: '.swiper-button-prev',
+	    //回調函數
+	    onInit: function(swiper){ //Swiper初始化   Swiper2.x的初始化是onFirstInit
+			swiperAnimate(swiper); //初始化完成开始动画
+		}, 
+		onSlideChangeEnd: function(swiper){ 
+			swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
+		} 
+	   
+    })        
+</script>
+</html>
